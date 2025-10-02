@@ -1,0 +1,112 @@
+@use "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+@font-face {
+  font-family: 'Starjedi';
+  src: url('/fonts/Starjedi.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'StarjediOutline';
+  src: url('/fonts/StarjOut.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'StarjediHollow';
+  src: url('/fonts/StarjHol.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  min-height: 50px;
+  width: 100%;
+  background: var(--background);
+}
+
+h2 {
+  font-family: 'Starjedi', sans-serif;
+  text-transform: lowercase;
+}
+
+.people-background::before {
+  background-image: url('/images/people.jpg');
+}
+
+.films-background::before {
+  background-image: url('/images/films.png');
+}
+
+
+.people-background,
+.films-background {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s ease;
+    z-index: 0;
+  }
+
+  &:hover::before,
+  &:focus::before  {
+    transform: scale(1.08);
+  }
+
+  & > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .star-background {
+    font-family: 'StarjediHollow', sans-serif;
+    background-image: url('/images/stars.jpg');
+    color: #FFD600;
+    border-radius: 14px;
+    padding: 0em 0.5em 0.15em 0.5em;
+    display: inline-block;
+  }
+}
