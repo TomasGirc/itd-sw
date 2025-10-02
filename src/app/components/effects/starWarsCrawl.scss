@@ -1,0 +1,36 @@
+.perspective {
+  perspective: 400px;
+}
+
+.crawl {
+  transform-origin: 50% 100%;
+  animation-name: crawl;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes crawl {
+  0% {
+    transform: rotateX(25deg) translateY(100%);
+  }
+  100% {
+    transform: rotateX(25deg) translateY(-300%);
+  }
+}
+
+/* Stopped state: fit text neatly in container */
+.crawl.stopped {
+  animation: none !important;
+  transform: none !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  padding: 1rem;
+  overflow-y: auto;          /* Scroll if text is too long */
+  box-sizing: border-box;    /* Ensure padding is inside the container */
+  max-height: 100%;          /* Prevent overflowing container */
+  word-wrap: break-word;     /* Break long words */
+}

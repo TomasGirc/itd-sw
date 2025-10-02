@@ -6,17 +6,13 @@ import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 
 export default function FilmPage() {
-  const { data, isLoading, error } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["films"],
     queryFn: () => getFilms(),
   });
 
   if (isLoading) {
     return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error loading films</div>;
   }
 
   const listOfFilms = data?.map((film: FilmsType) => (
