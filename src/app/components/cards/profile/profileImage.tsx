@@ -1,3 +1,4 @@
+import "./profileCard.scss";
 export default function ProfileImage() {
   return (
     <div className="profileimage">

@@ -1,9 +1,10 @@
 "use client";
 
 import { getPeople } from "@/api/people";
-import ProfileCard from "@/app/components/cards/profileCard";
+import ProfileCard from "@/app/components/cards/profile/profileCard";
 import SearchInput from "@/app/components/inputs/searchInput";
 import Pagination from "@/app/components/pagination/pagination";
+import Loading from "@/app/components/screens/loading";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
@@ -40,7 +41,7 @@ export default function PeoplePage() {
   }, [inputValue]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   return (

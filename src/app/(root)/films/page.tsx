@@ -1,9 +1,10 @@
 "use client";
 
 import { getFilms } from "@/api/films";
+import MovieCard from "@/app/components/cards/movie/movieCard";
+import Loading from "@/app/components/screens/loading";
 import { FilmsType } from "@/types/api.types";
 import { useQuery } from "@tanstack/react-query";
-import Link from "next/link";
 
 export default function FilmPage() {
   const { data, isLoading } = useQuery({
@@ -12,21 +13,18 @@ export default function FilmPage() {
   });
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   const listOfFilms = data?.map((film: FilmsType) => (
-    <Link href={`/films/${film.id}`} key={film.episode_id}>
-      <div className="mb-4 p-4 border rounded shadow">
-        <h2 className="text-xl font-bold mb-2">{film.title}</h2>
-        <p className="mb-2">{film.opening_crawl.substring(0, 128)}</p>
-      </div>
-    </Link>
+    <MovieCard movie={film} key={film.id} className="m-6" />
   ));
 
   return (
-    <div className="">
-      <div>{listOfFilms}</div>
+    <div className="h-full flex flex-col col-2 star-background">
+      <div id="movie-card-list" className="grid grid-cols-2 ">
+        {listOfFilms}
+      </div>
     </div>
   );
 }
