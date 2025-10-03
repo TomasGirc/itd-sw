@@ -10,6 +10,7 @@ export default function Loading() {
           className="mb-5"
           width={800}
           height={600}
+          unoptimized
         />
         <p className="text-yellow-500 text-xl">Loading, please wait...</p>
       </div>
